@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Airline Seat Booking</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>✈ Airline Seat Reservation</h1>
+
+  <div class="top-bar">
+    <div>Available Seats: <span id="availableCount"></span></div>
+    <div>Selected: <span id="selectedCount">0</span></div>
+    <div>Total: ₹<span id="totalPrice">0</span></div>
+
+    <button id="resetBtn">Reset Selection</button>
+    <button id="bookBtn">Proceed to Payment</button>
+  </div>
+
+  <div class="airplane">
+
+    <div class="cockpit">
+      <h2>Flight Air India</h2>
+    </div>
+
+    <div class="plane-body">
+
+      <div class="windows left-windows"></div>
+
+      <div class="cabin">
+
+        <h2>Business Class</h2>
+        <div id="businessSeats" class="seat-grid business-grid"></div>
+
+        <h2>Economy Class</h2>
+        <div id="economySeats" class="seat-grid economy-grid"></div>
+
+      </div>
+
+      <div class="windows right-windows"></div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Airline Reservation System</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+        }
+        input {
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Airline Reservation System</h2>
+
+<p id="seats"></p>
+
+<input type="number" id="seatNumber" placeholder="Enter seat number" />
+<br>
+<input type="text" id="name" placeholder="Passenger name" />
+<br>
+<input type="number" id="age" placeholder="Passenger age" />
+<br>
+<input type="text" id="gender" placeholder="Gender" />
+<br>
+
+<button onclick="bookSeat()">Book Seat</button>
+<button onclick="cancelSeat()">Cancel Seat</button>
+
+<script>
+    const totalSeats = 10;
+    let bookedSeats = [];
+
+    function showAvailableSeats() {
+        let available = [];
+        for (let i = 1; i <= totalSeats; i++) {
+            if (!bookedSeats.includes(i)) {
+                available.push(i);
+            }
+        }
+        document.getElementById("seats").innerText =
+            "Available seats: " + available.join(" ");
+    }
+
+    function bookSeat() {
+        const seat = parseInt(document.getElementById("seatNumber").value);
+        const name = document.getElementById("name").value;
+
+        if (seat < 1 || seat > totalSeats) {
+            alert("Invalid seat number");
+            return;
+        }
+
+        if (bookedSeats.includes(seat)) {
+            alert("Seat already booked");
+            return;
+        }
+
+        bookedSeats.push(seat);
+        alert("Seat " + seat + " booked successfully for " + name);
+        showAvailableSeats();
+    }
+
+    function cancelSeat() {
+        const seat = parseInt(document.getElementById("seatNumber").value);
+        const index = bookedSeats.indexOf(seat);
+
+        if (index === -1) {
+            alert("Seat not booked");
+            return;
+        }
+
+        bookedSeats.splice(index, 1);
+        alert("Seat " + seat + " cancelled");
+        showAvailableSeats();
+    }
+
+    showAvailableSeats();
+</script>
+
+</body>
+</html>

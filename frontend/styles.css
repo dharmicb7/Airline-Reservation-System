@@ -1,0 +1,126 @@
+body {
+  background: linear-gradient(135deg, #0b132b, #1c2541);
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+.top-bar {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#bookBtn {
+  background: #1f8ef1;
+  color: white;
+}
+
+#resetBtn {
+  background: #aaa;
+}
+
+.airplane {
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px 0;
+  background: linear-gradient(to bottom, #1a1a2e, #16213e);
+  border-radius: 250px 250px 80px 80px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+.cockpit {
+  padding: 20px;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.plane-body {
+  display: flex;
+  justify-content: center;
+}
+
+.windows {
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding-top: 60px;
+}
+
+.windows div {
+  width: 12px;
+  height: 12px;
+  background: #4ea8ff;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.cabin {
+  flex: 1;
+  padding: 0 40px;
+}
+
+.seat-grid {
+  margin: 20px 0 40px 0;
+}
+
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 60px) 60px repeat(2, 60px);
+  gap: 12px;
+  justify-content: center;
+}
+
+.economy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 60px) 60px repeat(3, 60px);
+  gap: 12px;
+  justify-content: center;
+}
+
+.seat {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.seat.available {
+  background: #2ecc71;
+}
+
+.seat.available:hover {
+  transform: scale(1.1);
+}
+
+.seat.selected {
+  background: #f1c40f;
+}
+
+.seat.booked {
+  background: #e63946;
+  cursor: not-allowed;
+}

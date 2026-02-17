@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Backend Admin Dashboard</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #0b132b;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .card {
+      background: #1c2541;
+      padding: 20px;
+      margin: 20px auto;
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 6px;
+      border: none;
+    }
+
+    .refresh { background: #2a9d8f; color: white; }
+    .reset { background: #e63946; color: white; }
+  </style>
+</head>
+<body>
+
+<h1>✈ Airline Backend Dashboard</h1>
+
+<div class="card">
+  <h3>Total Seats</h3>
+  <p id="totalSeats">0</p>
+</div>
+
+<div class="card">
+  <h3>Available Seats</h3>
+  <p id="availableSeats">0</p>
+</div>
+
+<div class="card">
+  <h3>Booked Seats</h3>
+  <p id="bookedSeats">0</p>
+</div>
+
+<button class="refresh" onclick="loadData()">Refresh</button>
+<button class="reset" onclick="resetBookings()">Reset All</button>
+
+<script>
+const API = "http://localhost:8080/api";
+
+async function loadData() {
+  const total = await fetch(API + "/total").then(r => r.json());
+  const available = await fetch(API + "/seats").then(r => r.json());
+  const booked = await fetch(API + "/booked").then(r => r.json());
+
+  document.getElementById("totalSeats").innerText = total;
+  document.getElementById("availableSeats").innerText = available.length;
+  document.getElementById("bookedSeats").innerText = booked.length;
+}
+
+async function resetBookings() {
+  await fetch(API + "/reset", { method: "POST" });
+  alert("All bookings reset!");
+  loadData();
+}
+
+loadData();
+</script>
+
+</body>
+</html>
